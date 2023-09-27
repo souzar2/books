@@ -1,0 +1,20 @@
+
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+
+<div class="container" style="padding: 20px;">
+        {% for livro in livros%}
+        <ul class="list-group" style="padding: 2px;">
+                {% if livro.tipo_transacao == 'venda' %}
+                <li class="list-group-item">
+                    <img src='{{livro.capa.url}}' style="width: 80px;" alt="Capa do livro: {{livro.titulo}}">
+                    Título: {{livro.titulo}} -
+                    Autor: {{livro.autor}} -
+                    Preço: R$ {{livro.preco}}
+                </li>
+                {%endif%}
+          </ul>
+        {% endfor %}
+</div>
+{% endblock %}

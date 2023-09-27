@@ -1,0 +1,23 @@
+
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+
+<div class="container" style="padding: 20px;">
+        {% for livro in livros%}
+        <ul class="list-group" style="padding: 2px;">
+            <li class="list-group-item">
+              <img src="{{livro.capa.url}}" style="width: 80px;" alt="oi">
+                Título: {{livro.titulo}} - Autor: {{livro.autor}} - 
+                {% if livro.tipo_transacao == 'troca' %}
+                Disponivel para troca
+                {% elif  livro.tipo_transacao == 'doacao'%}
+                Disponivel para doação
+                {% else %}
+                Disponivel para venda. Preço = R$ {{livro.preco}}
+                {%endif%}
+            </li>
+          </ul>
+        {% endfor %}
+</div>
+{% endblock %}
