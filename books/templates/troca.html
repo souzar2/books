@@ -1,21 +1,31 @@
-
 {% extends 'base.html'%}
 {% block content %}
 {% load static %}
 <div class="wrapper">
-
-<div class="container" style="padding: 20px;">
-        {% for livro in livros%}
-        <ul class="list-group" style="padding: 2px;">
-                {% if livro.tipo_transacao == 'troca' %}
+   <div class="containerListBooks" style="padding: 20px;">
+        <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                <img src='{{livro.capa.url}}' style="width: 80px;" alt="Capa do livro: {{livro.titulo}}">
-                    Título: {{livro.titulo}} - 
-                    Autor: {{livro.autor}}
+                        {% for livro in livros%}
+                        {% if livro.tipo_transacao == 'troca' %}
+                        <div class="card-books">
+                        <img class="imgBooks" src="{{livro.capa.url}}" alt="oi">
+                        <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Título: {{livro.titulo}}</li>
+                        <li class="list-group-item">Autor: {{livro.autor}}</li>
+                        <li class="list-group-item">Disponivel para troca</li>
+                        </ul>
+                        </div>
+                        <div class="botaoTexto">
+                                <button type="button" class="btnGetBooks"><img style="width: 30px; height: 30px;" src="/static/img/icons/getBook.png" alt=""></button>
+                                <p class="texto-abaixo">Quero esse livro</p>
+                        </div>
+                        
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                 </li>
-                {%endif%}
-          </ul>
-        {% endfor %}
+        </ul>
 </div>
 </div>
 {% endblock %}
