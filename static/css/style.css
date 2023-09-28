@@ -84,10 +84,16 @@
 }
 
 .iconComponent{
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
     text-align: center;
     margin: 0 10px;
     padding-bottom: 20px;
     padding-top: 30px;
+}
+
+.iconComponent:hover {
+    transform: scale(1.1);
+    width: 140%;
 }
 
 .textIcon{
@@ -135,6 +141,6 @@
 }
 
 .hover-image:hover {
-    transform: scale(1.2);
-    width: 120px;
+    transform: scale(1.1);
+    width: 110px;
 }
