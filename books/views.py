@@ -7,13 +7,16 @@ from django.http import HttpResponse
 
 from .models import *
 
+def sobre(request):
+    return render(request, 'homeAbout.html')
+
 def livros(request):
 
     livros = {
         'livros': Livro.objects.all()
     }
 
-    return render(request, 'home.html', livros)
+    return render(request, 'todos.html', livros)
 
 
 

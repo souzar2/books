@@ -1,0 +1,80 @@
+
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<div class="containerSobre">
+    <div class="textoSobre">
+        <h1>Clube dos Livros</h1>
+        <p class="paragrafoSobre">Anuncie ou adquira livros usados atreavés de trocas, vendas ou doações em Palmas-TO. 
+         <br>
+          Ajude a tornar o hábito de leitura mais acessível.
+        </p>
+    </div>
+    <img class="imgCat" src="{% static 'img/imagensProjeto/catReading.png' %}" alt="Gatinho">
+</div>
+
+    <div class="divisao">
+
+    </div>
+
+<div class="containerActions">
+    <div class="row">
+        <div class="iconComponent">
+            <img class="icon" src="{% static 'img/icons/login.png' %}" alt="Icone de Livros">
+            <p class="textIcon">Faça o Login</p>
+        </div>
+        <div class="iconComponent">
+            <img class="icon" src="{% static 'img/icons/book.png' %}" alt="Icone de Livros">
+            <p class="textIcon">Adquira-os</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="iconComponent">
+            <img class="icon" src="{% static 'img/icons/ebook.png' %}" alt="Icone de Livros">
+            <p class="textIcon">Veja os Livros</p>
+        </div>
+        <div class="iconComponent">
+            <img class="icon" src="{% static 'img/icons/money.png' %}" alt="Icone de Livros">
+            <p class="textIcon">Economize</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="iconComponent">
+            <img class="icon" src="{% static 'img/icons/diversity.png' %}" alt="Icone de Livros">
+            <p class="textIcon">Solicite-os</p>
+        </div>
+        <div class="iconComponent">
+            <img class="icon" src="{% static 'img/icons/read.png' %}" alt="Icone de Livros">
+            <p class="textIcon">Leia a vontade!</p>
+        </div>
+    </div>
+</div>
+
+<div class="divisao">
+
+</div>
+
+<div class="containerIdeiaProj">
+    <p class="text-left">Projeto idealizado por Arthur, um fã de literatura que adora programar,
+         formado em Ciência da Computação pela UFT.
+        <br>
+        <br>
+        O projeto foi desenvolvido em Django - Python. E a ideia 
+        surgiu como uma tentativa de tornar a literatura mais
+        acessível, passando os livros que voce não irá ler
+        mais para outras pessoas que poderiam aproveitá-lo melhor.
+   </p>
+   <img class="hover-image" src="{% static 'img/icons/arthur.png' %}" alt="Icone de Livros">
+            
+</div>
+
+<div class="divisao">
+
+</div>
+
+{% endblock %}

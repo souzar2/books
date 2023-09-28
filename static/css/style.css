@@ -1,0 +1,140 @@
+
+.navbar, navbar-expand-lg, navbar-light, bg-light{
+ position: fixed;
+ top: 0; /* Ajusta a posição no topo */
+    left: 0;
+    width: 100%;
+    padding: 10px 0; /* Espaçamento interno */
+    z-index: 1000;
+    
+}
+
+.navbar-brand{
+    display: inline-block;
+    width: 30px; /* Largura desejada para o ícone */
+    height: 30px; /* Altura desejada para o ícone */
+    border: 10px solid paleturquoise;
+    border-radius: 20%;
+    background-color: paleturquoise;
+    background-size: cover;
+}
+.paragrafoSobre{
+    font-size: 20px;
+}
+.textoSobre{
+    margin-left: 50px;
+    align-items: center; 
+    justify-content: center;
+}
+
+.imgCat{
+    width: 20%;
+    height: auto;
+}
+
+.containerSobre{
+    margin-top: 80px;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    background-color: rgb(226, 159, 183);
+    border: 2px solid paleturquoise;
+    border-width: 10px;
+    border-radius: 30px;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; 
+    height: 450px;
+    width: auto;
+}
+
+
+.containerActions{
+    margin-top: 40px;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    background-color:  rgb(226, 159, 183);
+    border: 2px solid paleturquoise;
+    border-width: 10px;
+    border-radius: 30px;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; 
+    height: auto;
+    width: 90%;
+    overflow-wrap: break-word;
+}
+
+.icon{
+    width: 35%;
+    height: auto;
+}
+
+.divisao{
+    padding-top: 10px;
+    padding-bottom: 0px;
+    width: 80%; 
+    border-top: 1.5px solid gray; 
+    margin: 50px auto;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.iconComponent{
+    text-align: center;
+    margin: 0 10px;
+    padding-bottom: 20px;
+    padding-top: 30px;
+}
+
+.textIcon{
+    align-items: center; 
+    justify-content: center;
+    font-size: 16px;
+}
+
+.containerIdeiaProj{
+    margin-top: 40px;
+    margin-left: 5%;
+    display: flex;
+    margin-right: 5%;
+    background-color:  rgb(226, 159, 183);
+    border: 2px solid paleturquoise;
+    border-width: 10px;
+    border-radius: 30px;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; 
+    height: auto;
+    width: 90%;
+    overflow-wrap: break-word;
+}
+
+.text-left{
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.hover-image {
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+    width: 100px; /* Largura inicial da imagem */
+    height: auto;
+    border-radius: 50%;
+}
+
+.hover-image:hover {
+    transform: scale(1.2);
+    width: 120px;
+}
