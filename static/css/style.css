@@ -9,6 +9,19 @@
     
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Define a altura mínima da página para 100% da altura da janela de visualização (viewport) */
+    
+}
+
+.wrapper {
+    flex-grow: 1; /* Permite que o conteúdo principal cresça e preencha o espaço disponível */
+}
+
 .navbar-brand{
     display: inline-block;
     width: 30px; /* Largura desejada para o ícone */
@@ -143,4 +156,15 @@
 .hover-image:hover {
     transform: scale(1.1);
     width: 110px;
+}
+
+@media (max-width: 768px) {
+    .hover-image {
+        pointer-events: none; /* Desativa o hover em dispositivos móveis */
+    }
+}
+@media (max-width: 768px) {
+    .imgComponent {
+        pointer-events: none; /* Desativa o hover em dispositivos móveis */
+    }
 }
