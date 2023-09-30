@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your Email Address" %}{% endblock head_title %}
+
+{% block content %}
+<div class="container d-flex align-items-center vh-100">
+    <div
+        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; border: 2px solid #000; border-radius: 10px;">
+
+        <div class="row">
+            <div class="col">
+                <h1>{% trans "Verifique seu endereço de email" %}</h1>
+
+                <p>{% blocktrans %}Foi enviado um email para a verificação. Clique no link reccebido para confirmar. Se
+                    o email nao estiver na caixa de entrada, Verifique sua pasta de spam. Por favor, entre em contato
+                    conosco se você não receber o email de verificação dentro de alguns minutos.{% endblocktrans %}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

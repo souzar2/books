@@ -15,7 +15,9 @@
           Ajude a tornar o hábito de leitura mais acessível.
          <br>
          <br>
+         {% if user.is_authenticated %}
          <a type="button" href="{% url 'books' %}" class="btn btn-info">Cadastrar Livros</a>
+         {% endif %}
          <br>
           <a type="button" href="{% url 'books' %}" class="btn btn-light">Livros Disponíveis</a>
         </p>

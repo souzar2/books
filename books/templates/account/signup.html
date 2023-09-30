@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Cadastro" %}{% endblock head_title %}
+
+{% block content %}
+<div class="container d-flex align-items-center vh-100">
+  <div 
+    style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px; border: 2px solid #000; border-radius: 10px;">
+
+    <div class="row">
+      <div class="col">
+<h1>{% trans "Cadastrar" %}</h1>
+
+<p>{% blocktrans %}Já possui uma conta? então <a href="{{ login_url }}">faça o login</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn btn-success" type="submit">{% trans "Cadastrar" %} &raquo;</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

@@ -179,6 +179,7 @@ body {
 
 .containerListBooks{
     margin-top: 85px;
+    padding: 20px;
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; 
@@ -255,4 +256,12 @@ body {
         display: block; /* Torna o texto visível em telas grandes */
         font-size: 16px;
     }
+}
+
+
+/* Telas de Login */
+
+.loginStyle{
+    padding: 200px;
+    margin-left: 200px;
 }

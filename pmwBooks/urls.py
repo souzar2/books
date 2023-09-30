@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from books import views
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('troca/', views.troca, name='troca'),
     path('venda/', views.venda, name='venda'),
     path('doacao/', views.doacao, name='doação'),
+    path('accounts/', include('allauth.urls')),
 ]

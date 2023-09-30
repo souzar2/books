@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Confirm Access" %}{% endblock head_title %}
+
+{% block content %}
+<div class="container d-flex align-items-center vh-100">
+  <div
+    style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; border: 2px solid #000; border-radius: 10px;">
+
+    <div class="row">
+      <div class="col">
+<h1>{% trans "Confirmar Acesso" %}</h1>
+
+<p>{% blocktranslate %}Para proteger a segurança da sua conta, por favor, digite sua senha.:{% endblocktranslate %}</p>
+
+<form class="reauthenticate" method="POST" action="{% url 'account_reauthenticate' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn btn-outline-success" type="submit">{% trans "Confirmar" %}</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}
