@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.modalRemover').click(function () {
+            var livroId = $(this).data('livro-id');
+
+            $('#confirmarExclusaoBtn').data('livro-id', livroId);
+            $('#confirmarExclusaoModal').modal('show');
+        });
+
+        $('#confirmarExclusaoBtn').click(function () {
+            var livroId = $(this).data('livro-id');
+            $.ajax({
+                url: '{% url "excluir_livro" 0 %}'.replace('0', livroId),
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+
+                success: function (response) {
+                    $('.mensagem-sucesso').show();
+                    setTimeout(function () {
+                        $('#confirmarExclusaoModal').modal('hide');
+                    }, 3000);
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                },
+
+                error: function (error) {
+                }
+            });
+        });
+    });
+
+
+</script>
+
+<div class="wrapper">
+
+    <div style="margin-top: 75px; margin-left: 73%; margin-bottom: 0px;">
+       <a href="{% url 'account_change_password' %}" class="btn btn-outline-primary"">Mudar senha</a>
+    </div>
+
+    <div style="margin-left: 20%; margin-top: 0px;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                {% if livros_do_usuario %}
+                {% for livro in livros_do_usuario %}
+                <div class="card-books" style="font-size: 15px;">
+                    <img style="width: 70px; border-radius: 10px;" src="{{ livro.capa.url }}" alt="oi">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush" style="width: 100%;">
+                            <li class="list-group-item">Título: {{ livro.titulo }}</li>
+                            <li class="list-group-item">Autor: {{ livro.autor }}</li>
+                            {% if livro.tipo_transacao == 'troca' %}
+                            <li class="list-group-item">Disponível para troca</li>
+                            {% elif livro.tipo_transacao == 'doacao' %}
+                            <li class="list-group-item">Disponível para doação</li>
+                            {% else %}
+                            <li class="list-group-item">Disponível para venda</li>
+                            <li class="list-group-item">Valor: <span class="badge rounded-pill bg-success">R$
+                                    {{livro.preco}}</span></li>
+
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="botaoTexto">
+                        <button type="button" class="btnGetBooks  modalRemover"
+                            style="background-color: red; height: 50px; width: 50px; border-radius: 50%;"
+                            data-bs-target="#confirmarExclusaoModal" data-livro-id="{{ livro.id }}">
+                            <img
+                                style="width: 30px; height: 30px;"
+                                src="/static/img/icons/remove.png" alt=""></button>
+                        <p class="texto-abaixo">Excluir esse livro</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>Você ainda não cadastrou nenhum livro.</p>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if livros_do_usuario.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?pagina=1" tabindex="-1" aria-disabled="true">Primeira</a>
+            </li>
+            {% endif %}
+            {% for num_pagina in livros_do_usuario.paginator.page_range %}
+            <li class="page-item {% if livros_do_usuario.number == num_pagina %}active{% endif %}">
+                <a class="page-link" href="?pagina={{ num_pagina }}">{{ num_pagina }}</a>
+            </li>
+            {% endfor %}
+            {% if livros_do_usuario.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?pagina={{ livros_do_usuario.paginator.num_pages }}">Última</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="confirmarExclusaoModal" tabindex="-1" aria-labelledby="confirmarExclusaoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmarExclusaoModalLabel">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza de que deseja excluir este livro?
+            </div>
+            <div class="modal-footer">
+                <div class="mensagem-sucesso" style="display: none; color: green;">Livro excluído com sucesso!</div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmarExclusaoBtn">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,7 +1,10 @@
+\*/source venv/bin/activate*/
+
 """
 python -m pip install Pillow
 pip install django-allauth
 pip install phonenumber-field
 pip install django-phonenumber-field
 pip install django-phonenumbers
+pip install python-decouple
 """

@@ -175,17 +175,29 @@ body {
 }
 
 
-/* Estilo das páginas de listagem e seus componentes */
-
 .containerListBooks{
     margin-top: 85px;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
     padding: 20px;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
     align-items: center; 
 }
 
-.card-books{
+.containerListBooksProfile{
+    margin-top: 10px;
+    margin-left: 40%;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.card-books{ 
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 2px;
@@ -196,9 +208,11 @@ body {
     border-radius: 10px;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; 
-    height: 50%;
-    width: auto;
+    height: auto;
+    width: 90%;
 }
+
+
 .list-group, list-group-flush{
     width: 85%;
 }
@@ -206,6 +220,7 @@ body {
 @media (max-width: 768px) {
     .list-group, list-group-flush {
         width: 100%;
+        font-size: 4px;
     }
 }
 
@@ -214,12 +229,9 @@ body {
     .list-group, list-group-flush {
         width: 55%;
     }
+    
 }
 
-.imgBooks{
-    border-radius: 10px;
-    width: 100px;
-}
 
 /* Estilos para o botão */
 .btnGetBooks {
@@ -239,7 +251,7 @@ body {
 }
 
 .botaoTexto{
-    width: 20%;
+    width: 10%;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -247,7 +259,7 @@ body {
 }
 
 .texto-abaixo {
-    display: none; /* Oculta o texto por padrão */
+    display: none;
 }
 
 /* Estilos para o texto abaixo do botão em telas grandes */
@@ -259,9 +271,16 @@ body {
 }
 
 
-/* Telas de Login */
-
-.loginStyle{
-    padding: 200px;
-    margin-left: 200px;
+/* Cadastro de Livro */
+.form-container {
+    position: relative;
+    padding: 20px;
+    margin-top: 90px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;/* Um valor maior do que o z-index da barra de navegação */
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
 }

@@ -42,9 +42,9 @@
 
       <div class="d-flex">
         {% if user.is_authenticated %}
-        <a class="btn btn-info" href="" type="submit">Meus Livros</a>
-        <a class="btn btn-secondary" href="" style="color: black; background-color: paleturquoise;" type="submit">Cadastrar Livros</a>
-        <a class="btn btn-light" href="{% url 'account_logout' %}" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        <a class="btn btn-info" href="{% url 'profile' %}" type="submit">Meus Livros</a>
+        <a class="btn btn-secondary" href="{% url 'cadastroLivro' %}" style="color: black; background-color: paleturquoise;" type="submit">Cadastrar Livros</a>
+        <a class="btn btn-light" href="{% url 'account_logout' %}" data-bs-toggle="modal" data-bs-target="#modalSair"
           type="submit">Sair</a>
         {% else %}
         <a class="btn btn-light" href="{% url 'account_login' %}" type="submit">Login</a>
@@ -63,7 +63,7 @@
 
 {% endblock %}
 
-<footer class="footer">
+<footer class="footer" style="margin-top: 50px;">
   <p>Clube dos Livros <img style="width: 50px; height: auto;" src="{% static 'img/imagensProjeto/catReading.png' %}"
       alt="Gatinho">
   </p>
@@ -87,7 +87,7 @@
 </html>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalSair" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -1,31 +1,98 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.abrir-modal').click(function() {
+            var email = $(this).data('usuario');
+            var whatsapp = $(this).data('whatsapp');
+
+            // Preencher informações no modal
+            $('#emailUsuario').text(email);
+            $('#whatsappUsuario').text(whatsapp);
+
+            // Mostrar o modal
+            $('#detalhesModal').modal('show');
+        });
+    });
+</script>
+
 <div class="wrapper">
-   <div class="containerListBooks" style="padding: 20px;">
-        <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                        {% for livro in livros%}
-                        {% if livro.tipo_transacao == 'troca' %}
-                        <div class="card-books">
-                        <img class="imgBooks" src="{{livro.capa.url}}" alt="oi">
-                        <div class="card-body">
-                        <ul class="list-group list-group-flush"  style="width: 100%;">
-                        <li class="list-group-item">Título: {{livro.titulo}}</li>
-                        <li class="list-group-item">Autor: {{livro.autor}}</li>
-                        <li class="list-group-item">Disponivel para troca</li>
-                        </ul>
-                        </div>
-                        <div class="botaoTexto">
-                                <button type="button" class="btnGetBooks"><img style="width: 30px; height: 30px;" src="/static/img/icons/getBook.png" alt=""></button>
-                                <p class="texto-abaixo">Quero esse livro</p>
-                        </div>
-                        
-                        </div>
+        <div class="containerListBooks">
+                <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                                {% for livro in dados_paginados %}
+                                <div class="card-books" style="font-size: 15px;">
+                                        <img style="width: 70px; border-radius: 10px;" src="{{ livro.capa.url }}"
+                                                alt="oi">
+                                        <div class="card-body">
+                                                <ul class="list-group list-group-flush" style="width: 100%;">
+                                                        <li class="list-group-item">Título: {{ livro.titulo }}</li>
+                                                        <li class="list-group-item">Autor: {{ livro.autor }}</li>
+                                                        <li class="list-group-item">Disponível para troca</li>
+                                                </ul>
+                                        </div>
+                                        <div class="botaoTexto">
+                                                <button type="button" class="btnGetBooks  abrir-modal"  data-usuario="{{ livro.usuario.email }}" data-whatsapp="{{ livro.validar_e_formatar_numero }}"><img
+                                                                style="width: 30px; height: 30px;"
+                                                                src="/static/img/icons/getBook.png" alt=""></button>
+                                                <p class="texto-abaixo">Quero esse livro</p>
+                                        </div>
+                                </div>{% empty %}
+                                <p>Nenhum livro foi cadastrado.</p>
+                                {% endfor %}
+                        </li>
+                </ul>
+        </div>
+
+</div>
+
+<div>
+        <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                        {% if dados_paginados.has_previous %}
+                        <li class="page-item">
+                                <a class="page-link" href="?pagina=1" tabindex="-1" aria-disabled="true">Primeira</a>
+                        </li>
                         {% endif %}
+                        {% for num_pagina in dados_paginados.paginator.page_range %}
+                        <li class="page-item {% if dados_paginados.number == num_pagina %}active{% endif %}">
+                                <a class="page-link" href="?pagina={{ num_pagina }}">{{ num_pagina }}</a>
+                        </li>
                         {% endfor %}
-                </li>
-        </ul>
+                        {% if dados_paginados.has_next %}
+                        <li class="page-item">
+                                <a class="page-link" href="?pagina={{ dados_paginados.paginator.num_pages }}">Última</a>
+                        </li>
+                        {% endif %}
+                </ul>
+        </nav>
 </div>
-</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="detalhesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Contatos</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Entrar em contato através de: </strong></p>
+                <p><strong>Email:</strong> <span id="emailUsuario"></span></p>
+                <p><strong>WhatsApp:</strong> <span id="whatsappUsuario"></span></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 {% endblock %}

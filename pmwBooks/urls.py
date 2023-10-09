@@ -10,5 +10,9 @@ urlpatterns = [
     path('troca/', views.troca, name='troca'),
     path('venda/', views.venda, name='venda'),
     path('doacao/', views.doacao, name='doação'),
+    path('profile/', views.profile, name='profile'),
     path('accounts/', include('allauth.urls')),
+    path('cadastroLivros/', views.cadLivro, name='cadastroLivro'),
+    path('solicitaLivroEmail/', views.solicitaLivroEmail, name='solicitaLivro'),
+    path('excluir-livro/<int:livro_id>/', views.excluir_livro, name='excluir_livro'),
 ]
