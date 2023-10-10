@@ -43,13 +43,14 @@
 
 </script>
 
-<div class="wrapper">
 
     <div style="margin-top: 75px; margin-left: 73%; margin-bottom: 0px;">
-       <a href="{% url 'account_change_password' %}" class="btn btn-outline-primary"">Mudar senha</a>
+       <a href="{% url 'account_change_password' %}" class="btn btn-outline-primary" style="font-size: 12px;">Mudar senha</a>
     </div>
+    <br>
 
-    <div style="margin-left: 20%; margin-top: 0px;">
+    <div class="wrapper">
+        <div class="containerListBooksProfile">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 {% if livros_do_usuario %}
@@ -74,7 +75,7 @@
                     </div>
                     <div class="botaoTexto">
                         <button type="button" class="btnGetBooks  modalRemover"
-                            style="background-color: red; height: 50px; width: 50px; border-radius: 50%;"
+                            style="background: linear-gradient(rgb(228, 69, 69), rgb(255, 0, 0)); height: 50px; width: 50px; border-radius: 50%;"
                             data-bs-target="#confirmarExclusaoModal" data-livro-id="{{ livro.id }}">
                             <img
                                 style="width: 30px; height: 30px;"
@@ -84,14 +85,12 @@
                 </div>
                 {% endfor %}
                 {% else %}
-                <p>Você ainda não cadastrou nenhum livro.</p>
+                <p style="align-items: center;">Você ainda não cadastrou nenhum livro.</p>
                 {% endif %}
             </li>
         </ul>
     </div>
-
 </div>
-
 <div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -112,6 +111,7 @@
             {% endif %}
         </ul>
     </nav>
+</div>
 </div>
 
 <!-- Modal -->

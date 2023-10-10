@@ -41,8 +41,11 @@
                                                                 src="/static/img/icons/getBook.png" alt=""></button>
                                                 <p class="texto-abaixo">Quero esse livro</p>
                                         </div>
-                                </div>{% empty %}
-                                <p>Nenhum livro foi cadastrado.</p>
+                                </div>
+                                {% empty %}
+                               
+                                <p >Nenhum livro foi cadastrado.</p>
+                        </div>
                                 {% endfor %}
                         </li>
                 </ul>

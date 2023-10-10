@@ -24,10 +24,10 @@ body {
 
 .navbar-brand{
     display: inline-block;
-    width: 30px; /* Largura desejada para o ícone */
-    height: 30px; /* Altura desejada para o ícone */
-    border: 10px solid paleturquoise;
-    border-radius: 20%;
+    width: 35px; /* Largura desejada para o ícone */
+    height: 35px; /* Altura desejada para o ícone */
+    border: 10px solid linear-gradient( rgb(158, 164, 218), rgb(99, 106, 170));
+    border-radius: 10px;
     background-color: paleturquoise;
     background-size: cover;
 }
@@ -49,8 +49,9 @@ body {
     margin-top: 95px;
     margin-left: 5%;
     margin-right: 5%;
+    padding: 10px;
     display: flex;
-    background-color: rgb(226, 159, 183);
+    background: linear-gradient(rgb(185, 149, 219), rgb(99, 106, 170));
     border: 2px solid paleturquoise;
     border-width: 10px;
     border-radius: 30px;
@@ -65,8 +66,9 @@ body {
     margin-top: 40px;
     margin-left: 5%;
     margin-right: 5%;
+    padding: 10px;
     display: flex;
-    background-color:  rgb(226, 159, 183);
+    background: linear-gradient(rgb(185, 149, 219), rgb(99, 106, 170));
     border: 2px solid paleturquoise;
     border-width: 10px;
     border-radius: 30px;
@@ -119,8 +121,9 @@ body {
     margin-top: 40px;
     margin-left: 5%;
     display: flex;
+    padding: 10px;
     margin-right: 5%;
-    background-color:  rgb(226, 159, 183);
+    background: linear-gradient(rgb(185, 149, 219), rgb(99, 106, 170));
     border: 2px solid paleturquoise;
     border-width: 10px;
     border-radius: 30px;
@@ -178,24 +181,24 @@ body {
 .containerListBooks{
     margin-top: 85px;
     flex-wrap: wrap;
-    width: auto;
+    width: 100%;
     height: auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center; 
+    overflow: auto;
 }
 
 .containerListBooksProfile{
-    margin-top: 10px;
-    margin-left: 40%;
     flex-wrap: wrap;
-    width: auto;
+    width: 100%;
     height: auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center; 
+    overflow: auto;
 }
 .card-books{ 
     margin-top: 5px;
@@ -203,7 +206,7 @@ body {
     margin-left: 2px;
     margin-right: 2px;
     display: flex;
-    padding: 5px;
+    padding: 20px;
     border: 1px solid grey;
     border-radius: 10px;
     justify-content: center; /* Centraliza horizontalmente */
@@ -219,15 +222,18 @@ body {
 
 @media (max-width: 768px) {
     .list-group, list-group-flush {
-        width: 100%;
-        font-size: 4px;
+        width: 90%;
+        font-size: 13px;
+        align-items: center;
+        justify-content: center;
+        
     }
 }
 
 /* Estilos para dispositivos de tela grande (PC) */
 @media (min-width: 769px) {
     .list-group, list-group-flush {
-        width: 55%;
+        width: 60%;
     }
     
 }
@@ -238,7 +244,7 @@ body {
     padding: 10px;
     bottom: 10px;
     right: 10px;
-    background-color:  rgb(71, 150, 150);
+    background: linear-gradient(rgb(156, 212, 212), rgb(0, 85, 85));
     color: white;
     border: none;
     border-radius: 50%;
@@ -251,7 +257,7 @@ body {
 }
 
 .botaoTexto{
-    width: 10%;
+    width: 30%;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -271,14 +277,14 @@ body {
 }
 
 
-/* Cadastro de Livro */
+
 .form-container {
     position: relative;
     padding: 20px;
     margin-top: 90px;
     margin-bottom: 0;
     margin-left: auto;
-    margin-right: auto;/* Um valor maior do que o z-index da barra de navegação */
+    margin-right: auto;
     border-radius: 30px;
     align-items: center;
     justify-content: center;
