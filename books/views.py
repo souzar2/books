@@ -62,8 +62,6 @@ def doacao(request):
     dados_paginados = paginator.get_page(pagina)
 
     return render(request, 'doacao.html', {'dados_paginados': dados_paginados})
-
-
 @login_required
 def profile(request):
     livros_do_usuario = Livro.objects.filter(usuario=request.user)
@@ -73,7 +71,6 @@ def profile(request):
     livros_paginados = paginator.get_page(numero_pagina)
     
     return render(request, 'profile.html', {'livros_do_usuario': livros_paginados})
-    
 
 @login_required
 def cadLivro(request):
