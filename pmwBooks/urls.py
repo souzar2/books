@@ -13,6 +13,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('accounts/', include('allauth.urls')),
     path('cadastroLivros/', views.cadLivro, name='cadastroLivro'),
-    path('solicitaLivroEmail/', views.solicitaLivroEmail, name='solicitaLivro'),
     path('excluir-livro/<int:livro_id>/', views.excluir_livro, name='excluir_livro'),
 ]

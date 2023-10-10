@@ -63,9 +63,6 @@ def doacao(request):
 
     return render(request, 'doacao.html', {'dados_paginados': dados_paginados})
 
-def solicitaLivroEmail(request):
-    send_mail('Assunto', 'Este é o email', 'arthursilvasouza98@hotmail.com', ['arthursilvasouza98@gmail.com'])
-    return HttpResponse("Olá")
 
 @login_required
 def profile(request):
