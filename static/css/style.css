@@ -228,7 +228,7 @@ body {
     justify-content: center;
     align-items: center; 
     height: auto;
-    width: 90%;
+    width: 90%; 
 }
 
 @media (max-width: 768px) {
