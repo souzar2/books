@@ -200,6 +200,7 @@ body {
     align-items: center; 
     overflow: auto;
 }
+
 .card-books{ 
     margin-top: 5px;
     margin-bottom: 5px;
@@ -213,6 +214,39 @@ body {
     align-items: center; 
     height: auto;
     width: 90%;
+}
+
+.card-feedback{ 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    display: flex;
+    padding: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; 
+    height: auto;
+    width: 90%;
+}
+
+@media (max-width: 768px) {
+    .card-books{
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+}
+
+.capaLivro{
+    width: 100px; 
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .capaLivro{
+        width: 25%;
+    }
 }
 
 
@@ -289,4 +323,48 @@ body {
     align-items: center;
     justify-content: center;
     border: 2px solid black;
+}
+
+@media (max-width: 768px) {
+    .form-container{
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile{
+        margin-top: 35%;
+        margin-bottom: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footerMobile{
+        height: 150px;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .custom-file-input::after {
+        content: "";
+    }
+
+    .custom-file-input::before {
+        content: "";
+    }
+
+    .custom-file-input {
+        display: flex;
+        width: 100%;
+        height: calc(1.5em + .75rem +150px);
+        padding: .375rem .75rem;
+        font-size: 12px;
+        line-height: 1.5;
+        background-color: #fff;
+        background-clip: padding-box;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
 }

@@ -109,4 +109,10 @@
 </div>
 
 
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href="{% url 'feedbacks' %}" class="btn btn-success me-md-2" type="button">Feedbacks</a>
+  {% if user.is_authenticated %}
+  <a href="{% url 'addFeedback' %}" class="btn btn-primary me-md-2" type="button">Salvar Feedback</a>
+  {% endif%}  </div>
 {% endblock %}

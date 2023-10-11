@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import HttpResponse
-from .forms import LivroForm
+from .forms import LivroForm, FeedbackForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
@@ -15,6 +15,17 @@ from .models import *
 def sobre(request):
     return render(request, 'homeAbout.html')
 
+
+def feedbacks(request):
+    dados = Feedbacks.objects.all()
+
+    itens_por_pagina = 5
+    paginator = Paginator(dados, itens_por_pagina)
+
+    pagina = request.GET.get('pagina')
+    dados_paginados = paginator.get_page(pagina)
+    return render(request, 'FeedbackList.html', {'dados_paginados': dados_paginados})
+
 def livros(request):
     dados = Livro.objects.all()
 
@@ -23,7 +34,6 @@ def livros(request):
 
     pagina = request.GET.get('pagina')
     dados_paginados = paginator.get_page(pagina)
-
     return render(request, 'todos.html', {'dados_paginados': dados_paginados})
 
 
@@ -38,7 +48,6 @@ def troca(request):
 
     pagina = request.GET.get('pagina')
     dados_paginados = paginator.get_page(pagina)
-
     return render(request, 'troca.html', {'dados_paginados': dados_paginados})
 
 
@@ -60,8 +69,8 @@ def doacao(request):
 
     pagina = request.GET.get('pagina')
     dados_paginados = paginator.get_page(pagina)
-
     return render(request, 'doacao.html', {'dados_paginados': dados_paginados})
+
 @login_required
 def profile(request):
     livros_do_usuario = Livro.objects.filter(usuario=request.user)
@@ -111,3 +120,16 @@ def excluir_livro(request, livro_id):
     livro.delete()
 
     return JsonResponse({'message': 'Livro excluído com sucesso!'})
+
+@login_required
+def adicionarFeedback(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.usuario = request.user
+            feedback.save()
+            return redirect('feedbacks')  # Redirecione para a página de sucesso após o envio do feedback
+    else:
+        form = FeedbackForm()
+    return render(request, 'feedback.html', {'form': form})

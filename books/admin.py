@@ -7,5 +7,6 @@ from .models import *
 admin.site.register(Livro)
 admin.site.register(GeneroLivro)
 admin.site.register(Usuario)
+admin.site.register(Feedbacks)
 
 

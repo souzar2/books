@@ -15,7 +15,12 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nome
 
+class Feedbacks(models.Model):
+    mensagem = models.TextField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return f'Feedback de {self.usuario.username} - {self.mensagem}'
 
 
 class GeneroLivro(models.Model):
@@ -85,5 +90,3 @@ class Livro(models.Model):
                     os.remove(objeto_existente.capa.path)
 
         super(Livro, self).save(*args, **kwargs)
-
-

@@ -26,7 +26,7 @@
       <li class="list-group-item">
         {% for livro in dados_paginados %}
         <div class="card-books" style="font-size: 15px;">
-          <img style="width: 70px; border-radius: 10px;" src="{{ livro.capa.url }}" alt="oi">
+          <img class="capaLivro" src="{{ livro.capa.url }}" alt="oi">
           <div class="card-body">
             <ul class="list-group list-group-flush" style="width: 100%;">
               <li class="list-group-item">Título: {{ livro.titulo }}</li>
@@ -102,4 +102,11 @@
   </div>
 </div>
 
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="{% url 'feedbacks' %}" class="btn btn-success me-md-2" type="button">Feedbacks</a>
+  {% if user.is_authenticated %}
+  <a href="{% url 'addFeedback' %}" class="btn btn-primary me-md-2" type="button">Salvar Feedback</a>
+  {% endif%}
+</div>
 {% endblock %}

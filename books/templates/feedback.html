@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="form-container">
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Salvar Feedback</button>
+  </form>
+</div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+<a href="{% url 'feedbacks' %}" class="btn btn-primary me-md-2" type="button">Feedbacks</a>
+</div>
+  
+{% endblock %}
